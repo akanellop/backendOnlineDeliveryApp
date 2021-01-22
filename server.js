@@ -1,24 +1,4 @@
-/*
-console.log('Online Delivery Service Application Server is Running...')
-
-const http= require('http');
-const app = require('./app');
-
-const PORT = (process.env.Port || 3000);
-
-//This was commented because now all the intaken requests will be handled from the  express app
-//const server = http.createServer((req,res) => { //this function will be executed whenever our server is receiving a call
-//    res.end('This method returns the server\'s response');
-
-//});
-
-app.set('port', PORT)
-const server = http.createServer(app);
-server.listen(PORT); //process.env.Port will be selected in case the server is deployed
-
-*/
-
-console.log('Online Delivery Service Application Server is Running...')
+console.log('Online Delivery Service Application Server is Running...');
 const http = require('http');
 const app = require('./app');
 
