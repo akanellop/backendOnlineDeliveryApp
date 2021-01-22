@@ -7,6 +7,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const productRoutes = require('./routes/product')
+const userRoutes = require('./routes/user')
+
 //----------------------------------
 //Establishing a conection with the MongoDB clsuter
 //----------------------------------
@@ -34,6 +36,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api/product',productRoutes);
+app.use('/api/auth',userRoutes);
 
 
 module.exports = app;
