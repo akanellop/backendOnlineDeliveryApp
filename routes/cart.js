@@ -5,18 +5,13 @@ const cartCtrl = require('../controllers/cart');
 const auth = require('../middleware/auth');
 
 
-//----------------------------------
-//API routes handling
-//----------------------------------
 
-// Crud
-//router.post('/submit',auth, cartCtrl.makeOrder );
-//crUd
-//router.put('/:id',auth, cartCtrl.updateProduct);
-//cruD
-//router.delete('/:id',auth, cartCtrl.deleteProduct);
-//cRud
-router.get('/carts', auth, cartCtrl.returnCarts); // will rerutn al products of unbmitted cart
+router.post('/submit',auth, cartCtrl.submitOrder );
+router.put('/:id',auth, cartCtrl.putProductInCart);
+router.get('/', auth, cartCtrl.returnUsersCart); 
+
+
+//router.get('/carts', auth, cartCtrl.returnCarts); // TESTING PURPOSES
 
 
 module.exports = router;

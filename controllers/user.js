@@ -19,8 +19,7 @@ exports.signup = (req, res, next) => {
           userID:user._id,
           products:[],
           address:user.address,
-          totalPrice:0,
-          submitted: false
+          totalPrice:0
       });
       cart.save()
       .catch((error)=>{
