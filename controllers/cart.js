@@ -52,34 +52,20 @@ exports.submitOrder = (req,res) =>{
         (cart) => {
             Order.findOne({userID: USERID})
             .then((order)=>{
-                if(order){ //if there is an existing order
-                    const updatedOrder = new Order({
-                    products:order.products.concat(cart.products),
-                    address:cart.address,
-                    totalPrice:order.totalPrice + cart.totalPrice
-                    });
-                
-                    Order.updateOne({_id:order._id},updatedOrder)
-                    .catch((error)=>{
-                        res.status(400).json({
-                            error: error
+                 //else create a new one
+                        const newOrder = new Order({
+                        products:cart.products,
+                        address:cart.address,
+                        totalPrice:cart.totalPrice,
                         });
-                    });
-                }
-                else{  //else create a new one
-                    const newOrder = new Order({
-                    products:cart.products,
-                    address:cart.address,
-                    totalPrice:cart.totalPrice,
-                    });
 
-                    newOrder.save()
-                    .catch((error)=>{
-                        res.status(400).json({
-                            error: error
+                        newOrder.save()
+                        .catch((error)=>{
+                            res.status(400).json({
+                                error: error
+                            });
                         });
-                    });
-                }
+                
             }).then(()=> {
 
                 Cart.updateOne({_id:cart._id},
