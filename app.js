@@ -6,8 +6,10 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 
-const productRoutes = require('./routes/product')
-const userRoutes = require('./routes/user')
+const productRoutes = require('./routes/product');
+const userRoutes = require('./routes/user');
+const cartRoutes = require('./routes/cart');
+const adminRoutes = require('./routes/admin');
 
 //----------------------------------
 //Establishing a conection with the MongoDB clsuter
@@ -35,8 +37,11 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api/product',productRoutes);
+app.use('/api/shop/products',productRoutes);
+app.use('/api/shop/cart',cartRoutes);
+app.use('/api/admin',adminRoutes);
 app.use('/api/auth',userRoutes);
+
 
 
 module.exports = app;

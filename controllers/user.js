@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Cart = require('../models/cart');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -8,8 +9,24 @@ exports.signup = (req, res, next) => {
       (hash) => {
         const user = new User({
           email: req.body.email,
-          password: hash
+          password: hash,
+          address: req.body.address
         });
+        //cart creation for user
+        const cart = new Cart({
+          userID:user._id,
+          products:[],
+          address:user.address,
+          totalPrice:0,
+          submitted: false
+      });
+      cart.save()
+      .catch((error)=>{
+          res.status(400).json({
+              error: error
+            });
+      });
+
         user.save().then(
           () => {
             res.status(201).json({
@@ -24,6 +41,7 @@ exports.signup = (req, res, next) => {
           }
         );
       }
+     
     );
   };
 
@@ -42,13 +60,9 @@ exports.signup = (req, res, next) => {
                 error: new Error('Incorrect password!')
               });
             }
-            const token = jwt.sign(
-              { userId: user._id },
-              'RANDOM_TOKEN_SECRET',
-              { expiresIn: '24h' });
             res.status(200).json({
               userId: user._id,
-              token: token
+              token: 'token'
             });
           }
         ).catch(
