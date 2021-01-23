@@ -15,7 +15,7 @@ exports.viewInventory = (req,res) =>{
 
 
 exports.viewCategory = (req,res) =>{
-    const CATEGORY = req.params.CATEGORY.toString();
+    const CATEGORY = req.params.category;
 
     Product.find({category:CATEGORY})
     .then((products) => {

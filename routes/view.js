@@ -5,8 +5,8 @@ const viewCtrl = require('../controllers/view');
 const auth = require('../middleware/auth');
 
 
-router.post('/',auth, viewCtrl.viewInventory );
-router.post('/:category',auth, viewCtrl.viewCategory);
+router.get('/',auth, viewCtrl.viewInventory );
+router.get('/:category',auth, viewCtrl.viewCategory);
 
 
 module.exports = router;

@@ -19,10 +19,10 @@ exports.returnSubmittedOrders = (req,res) =>{
 
 
 exports.createProduct = (req,res) =>{
+        console.log("here")
     const product = new Product({
         name:req.body.name,
-        description:req.body.description,
-        quantity:req.body.quantity,
+        category:req.body.category,
         price:req.body.price
     });
     product.save().then(
@@ -42,8 +42,7 @@ exports.updateProduct = (req,res) => {
     const product = new Product({
         _id:req.params.id,
         name:req.body.name,
-        description:req.body.description,
-        quantity:req.body.quantity,
+        category:req.body.category,
         price:req.body.price
     });
 

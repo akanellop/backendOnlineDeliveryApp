@@ -7,9 +7,9 @@ const ownerCtrl = require('../controllers/shopOwner')
 
 router.get('/orders', auth, ownerCtrl.returnSubmittedOrders); 
 
-router.post('/',auth, ownerCtrl.createProduct );
-router.put('/:id',auth, ownerCtrl.updateProduct);
-router.delete('/:id',auth, ownerCtrl.deleteProduct);
+router.post('/product',auth, ownerCtrl.createProduct );
+router.put('/product/:id',auth, ownerCtrl.updateProduct);
+router.delete('/product/:id',auth, ownerCtrl.deleteProduct);
 
 ///////////////
 router.post('/erase', auth, ownerCtrl.deleteEverything); // for testing purposes !!! Erases everything from database
