@@ -19,7 +19,6 @@ exports.returnSubmittedOrders = (req,res) =>{
 
 
 exports.createProduct = (req,res) =>{
-        console.log("here")
     const product = new Product({
         name:req.body.name,
         category:req.body.category,
@@ -74,7 +73,7 @@ exports.deleteProduct = (req,res) => {
 }
 
 
-//for testing and implementation 
+//!!! For testing and implementation !!!
 
 exports.returnUsers = (req,res) =>{
     User.find().then(
@@ -98,12 +97,6 @@ exports.deleteEverything = (req,res) =>{
     
 
     Cart.deleteMany()
-    .catch((error)=>{
-        res.status(400).json({
-            error: error
-          });
-    });
-    Product.deleteMany()
     .catch((error)=>{
         res.status(400).json({
             error: error

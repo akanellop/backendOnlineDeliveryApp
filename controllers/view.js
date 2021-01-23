@@ -27,3 +27,17 @@ exports.viewCategory = (req,res) =>{
         });
     });
 }
+
+exports.viewProduct = (req,res) =>{
+    const PRODUCTID= req.params.id;
+
+    Product.findOne({_id:PRODUCTID})
+    .then((product) => {
+        res.status(200).json(product);
+    })
+    .catch((error)=>{
+        res.status(400).json({
+            error: error
+        });
+    });
+}

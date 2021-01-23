@@ -6,10 +6,10 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 
-const clientViewRoutes = require('./routes/view');
-const userRoutes = require('./routes/user');
-const clientCartRoutes = require('./routes/cart');
+const clientViewRoutes = require('./routes/client/view');
+const clientCartRoutes = require('./routes/client/cart');
 const ownerRoutes = require('./routes/shopOwner');
+const userRoutes = require('./routes/user');
 
 //----------------------------------
 //Establishing a connection with the MongoDB cluster
