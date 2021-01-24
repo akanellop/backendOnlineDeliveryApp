@@ -2,7 +2,7 @@
 
 **Hours spent:** 12
 
-**API documentation**\ 
+**API documentation** <\br >
 Authenticate&Authorization routes
 
 * POST /api/auth/signup   
@@ -61,4 +61,5 @@ Authorization type = Bearer Token\
 Request headers : [ id = 'userId']\
 Description = create new object order in database containing products from given user's cart, empty user's cart \
 
+**How to run**\ 
 
