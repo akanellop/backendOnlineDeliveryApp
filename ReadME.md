@@ -70,7 +70,7 @@ You can signup with your credentials before logging in or use the existing testi
 }  
 for logging in.  
 *After logging in, One should note the returned token and id for using the APIs above.  
-Note: 
+
    
 
 **Project Architecture**  
