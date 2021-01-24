@@ -1,7 +1,9 @@
 **Online delivery shop API**
 
 **Hours spent:** 12
+
 -------------------------------------------
+
 **API documentation**  
 Authenticate&Authorization routes   
 
@@ -75,6 +77,7 @@ Description = create new object order in database containing products from given
 Server is already connected to MongoDB cluster.  
 Server runs using Node.js.  
 Npm packages to be installed are in package.json dependecies.  
+Note: At the moment admin and client sign up as a user without role separation. (To be implemented: different user roles)  
 
 * Database Schemas  
 user {  
