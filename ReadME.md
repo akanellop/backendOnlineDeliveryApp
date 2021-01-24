@@ -6,11 +6,11 @@
 Authenticate&Authorization routes
 
 * POST /api/auth/signup   
-Request body = JSON{"email":,"password":,"address":}
-Description = Create new user and a corresponding new cart in database. No email duplicates.
+Request body = JSON{"email":,"password":,"address":}/
+Description = Create new user and a corresponding new cart in database. No email duplicates./
 * POST /api/auth/login
 Request body = JSON{"email":,"password":}
-Description = Post existing credentials to receive JSON {"userId":,"token:"} 
+Description = Post existing credentials to receive JSON {"userId":,"token:"} /
 
 Shop Owner routes
 
