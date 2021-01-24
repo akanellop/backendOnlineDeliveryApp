@@ -1,7 +1,7 @@
 **Online delivery shop API**
 
 **Hours spent:** 12
-
+-------------------------------------------
 **API documentation**  
 Authenticate&Authorization routes   
 
@@ -68,17 +68,7 @@ Authorization type = Bearer Token
 Request headers : [ id = 'userId']  
 Description = create new object order in database containing products from given user's cart, empty user's cart   
 
-**How to run**  
-After cloning or unzipping the project run 'node server' on your console.
-You can signup with your credentials before logging in or use the existing testing user  
-{   
-    "email": "katerina@gmail.com",  
-    "password" : "pass"  
-}  
-for logging in.  
-*After logging in, One should note the returned token and id for using the APIs above.  
-
-   
+ -------------------------------------------
 
 **Project Architecture**  
 * General  
@@ -104,6 +94,18 @@ routes: Contains the redirection od the requests to the rigth controllers
 models: Contains DB schemas  
 controllers: Contains the server's buisness logic and the request handling   
 sevices & middleware: Contain complementary functions  
+
+-------------------------------------------
+
+**How to run**  
+After cloning or unzipping the project run 'node server' on your console.
+You can signup with your credentials before logging in or use the existing testing user  
+{   
+    "email": "katerina@gmail.com",  
+    "password" : "pass"  
+}  
+for logging in.  
+*After logging in, One should note the returned token and id for using the APIs above.  
 
 
 
