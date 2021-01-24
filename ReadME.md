@@ -53,10 +53,7 @@ Request headers : [ id = 'userId'] & [ cur = Currency] , Note: Currency may be '
 Description = return json objects of all products in given user's cart  
 * PUT /api/shop/cart/:id  
 Authorization type = Bearer Token  
-Request headers : [ id = 'userId'] & 
-
-
-.[ cur = Currency] , Note: Currency may be 'USD','AUD',..,empty  
+Request headers : [ id = 'userId'] &  [ cur = Currency] , Note: Currency may be 'USD','AUD',..,empty  
 Request param : id = productId  
 Description = put product with producy id in user's cart product array  
 * POST /api/shop/cart/submit  
@@ -68,8 +65,8 @@ Description = create new object order in database containing products from given
 After cloning or unzipping the project run 'node server' on your console.
 You can signup with your credentials before logging in or use the existing testing user
 {   
-    "email": "katerina@gmail.com",
-    "password" : "pass"
+    "email": "katerina@gmail.com",  
+    "password" : "pass"  
 }  
 for logging in.  
 *After logging in, One should note the returned token and id for using the APIs above.  
@@ -80,20 +77,20 @@ Note:
 * General  
 Server is already connected to MongoDB cluster.  
 Server runs using Node.js.  
-Npm packages to be installed are package.json dependecies.  
+Npm packages to be installed are in package.json dependecies.  
 
 * Database Schemas  
 user {  
-    email: , password: , address: 
+    email: , password: , address:  
 }    
 product {  
-    name:,category:,price: 
+    name:,category:,price:  
 }  
 cart {  
-    userID: , products: [ref: Product], address:, totalPrice:
+    userID: , products: [ref: Product], address:, totalPrice: 
 }  
 order {  
-    products: [ref: Product], address:, totalPrice:
+    products: [ref: Product], address:, totalPrice:  
 }  
 * Folders  
 routes: Contains the redirection od the requests to the rigth controllers  
