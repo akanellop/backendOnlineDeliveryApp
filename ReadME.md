@@ -2,21 +2,21 @@
 
 **Hours spent:** 12
 
-**API documentation** <\br >
-Authenticate&Authorization routes
+**API documentation**  
+Authenticate&Authorization routes   
 
 * POST /api/auth/signup   
-Request body = JSON{"email":,"password":,"address":}\
-Description = Create new user and a corresponding new cart in database. No email duplicates.\
-* POST /api/auth/login
-Request body = JSON{"email":,"password":}\
-Description = Post existing credentials to receive JSON {"userId":,"token:"}\
+Request body = JSON{"email":,"password":,"address":}  
+Description = Create new user and a corresponding new cart in database. No email duplicates.  
+* POST /api/auth/login  
+Request body = JSON{"email":,"password":}  
+Description = Post existing credentials to receive JSON {"userId":,"token:"}  
 
-Shop Owner routes
+Shop Owner routes  
 
-* GET /api/admin/orders
-Authorization type = Bearer Token\
-Description = Returns JSON array containing all submitted orders\
+* GET /api/admin/orders  
+Authorization type = Bearer Token  
+Description = Returns JSON array containing all submitted orders  
 * POST /api/admin/product
 Authorization type = Bearer Token\
 Request body = JSON{"name":,"category":,"price":} Note: category = Main Dishes/Drinks/Salads/Appetizers & price format = 0.00\
