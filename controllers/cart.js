@@ -1,14 +1,24 @@
 const Cart = require('../models/cart')
 const Order = require('../models/order')
-const Product = require('../models/product')
+const Product = require('../models/product');
+const cur = require('../services/getCurrencyRate');
 
 
 exports.returnUsersCart = (req,res) =>{
     const USERID = req.headers.id.toString();
-
+    const CURRENCY = req.headers.cur.toString();
+    
     Cart.findOne({userID: USERID}).populate('products')
     .then((cart) => {
-        res.status(200).json(cart.products);
+        if(CURRENCY){
+            cur.getNewCurrencyRate(CURRENCY).then( rate =>{
+                cart.totalPrice *= rate;
+                res.status(200).json(cart);
+            })
+        }
+        else{
+            res.status(200).json(cart);
+        }
     })
     .catch((error)=>{
         res.status(400).json({
@@ -34,16 +44,14 @@ exports.putProductInCart = (req,res) =>{
                     {$set: {_id: cart._id,products: updatedProducts,address: cart.address,
                         userID: cart.userID, totalPrice: updatedPrice}},{upsert: true})
 
-                .then(()=>{res.status(201).json({message:"Succesful insertion."})})
+                .then(()=>{res.status(201).json({message:"Product added succesfully."})})
 
                 .catch((error)=>{
                     res.status(400).json({error: error});
                 })
             })
         })
- 
 }
-
 
 exports.submitOrder = (req,res) =>{
     const USERID = req.headers.id.toString();
@@ -52,22 +60,21 @@ exports.submitOrder = (req,res) =>{
         (cart) => {
             Order.findOne({userID: USERID})
             .then((order)=>{
-                 //else create a new one
-                        const newOrder = new Order({
-                        products:cart.products,
-                        address:cart.address,
-                        totalPrice:cart.totalPrice,
-                        });
-
-                        newOrder.save()
-                        .catch((error)=>{
-                            res.status(400).json({
-                                error: error
-                            });
-                        });
+                 //Create new order
+                 const newOrder = new Order({
+                     products:cart.products,
+                     address:cart.address,
+                     totalPrice:cart.totalPrice,
+                    });
+                newOrder.save()
+                .catch((error)=>{
+                    res.status(400).json({
+                        error: error
+                    });
+                });
                 
             }).then(()=> {
-
+                //Empty user's cart 
                 Cart.updateOne({_id:cart._id},
                     {$set: {_id: cart._id, products: [], address: cart.address,
                          userID: cart.userID, totalPrice: 0}},{upsert: true})
@@ -81,7 +88,6 @@ exports.submitOrder = (req,res) =>{
                     });
                 });
             })
-
             
         })
         .catch((error)=>{
@@ -90,20 +96,4 @@ exports.submitOrder = (req,res) =>{
           });
     });
 }
-
-
-
-//for testing!!!
-exports.returnCarts = (req,res) =>{
-    Cart.find().then(
-        (products) => {
-            res.status(200).json(products);
-        }
-    ).catch((error)=>{
-        res.status(400).json({
-            error: error
-          });
-    });
-}
-
 

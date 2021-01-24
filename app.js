@@ -11,9 +11,9 @@ const clientCartRoutes = require('./routes/client/cart');
 const ownerRoutes = require('./routes/shopOwner');
 const userRoutes = require('./routes/user');
 
-//----------------------------------
+//--------------------------------------------------------
 //Establishing a connection with the MongoDB cluster
-//----------------------------------
+//--------------------------------------------------------
 
 const app = express();
 mongoose.connect('mongodb+srv://admin:1WxzRfsFepaRkCT8@cluster0.prwve.mongodb.net/<dbname>?retryWrites=true&w=majority')
@@ -24,9 +24,9 @@ mongoose.connect('mongodb+srv://admin:1WxzRfsFepaRkCT8@cluster0.prwve.mongodb.ne
         });
 
 
-//----------------------------------
-//Initializing headers' preferences for avoiding CORS errors and json manipulation
-//----------------------------------
+//--------------------------------------------------------
+//Initializing headers' preferences for avoiding CORS errors 
+//--------------------------------------------------------
 
 app.use((req, res, next) => { 
     res.setHeader('Access-Control-Allow-Origin', '*'); //allow everyone that tries to access

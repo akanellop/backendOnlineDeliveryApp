@@ -14,8 +14,8 @@ exports.signup = (req, res, next) => {
         });
 
 
-        //cart creation for user
-        const cart = new Cart({
+      //Create cart for new user
+      const cart = new Cart({
           userID:user._id,
           products:[],
           address:user.address,
@@ -27,23 +27,18 @@ exports.signup = (req, res, next) => {
               error: error
             });
       });
-
-        user.save().then(
-          () => {
-            res.status(201).json({
-              message: 'User added successfully!'
-            });
-          }
-        ).catch(
-          (error) => {
-            res.status(500).json({
-              error: error
-            });
-          }
-        );
-      }
-     
-    );
+      
+      user.save().then(() => {
+        res.status(201).json({
+          message: 'User added successfully!'
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({
+          error: error
+        });
+      });
+    });
   };
 
 exports.login = (req, res, next) => {

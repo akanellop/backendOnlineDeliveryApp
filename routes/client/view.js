@@ -7,7 +7,7 @@ const auth = require('../../middleware/auth');
 
 router.get('/',auth, viewCtrl.viewInventory );
 router.get('/:category',auth, viewCtrl.viewCategory);
-router.get('/:id',auth, viewCtrl.viewProduct);
+router.get('/product/:id',auth, viewCtrl.viewProduct);
 
 
 module.exports = router;

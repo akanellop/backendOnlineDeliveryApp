@@ -1,14 +1,11 @@
-// Fixer API aCCESS kEY db8ebcaa67356ae12330869c19394acc
-//fixer api base url  http://data.fixer.io/api/
-
-//ex. http://data.fixer.io/api/latest?access_key=db8ebcaa67356ae12330869c19394acc
-
+//Fixer API access key: db8ebcaa67356ae12330869c19394acc
+//Fixer API base url:  http://data.fixer.io/api/
+//Fixer API request exampple:
 //http://data.fixer.io/api/latest?access_key=db8ebcaa67356ae12330869c19394acc& base = EUR & symbols = USD,AUD,CAD,PLN,MXN
-
 
 const http = require('http');
 
-exports.convertFromEUR = (NEW_CUR,PRICE) => {
+exports.getNewCurrencyRate = (NEW_CUR) => {
 
     return new Promise ((resolve, reject) => {
         const path = '/api/latest?access_key=db8ebcaa67356ae12330869c19394acc&base=EUR&symbols='+NEW_CUR; 
@@ -22,7 +19,7 @@ exports.convertFromEUR = (NEW_CUR,PRICE) => {
             res.on('data', function (chunk) {
                 const body = JSON.parse(chunk);
                 const rate = body.rates[NEW_CUR];
-                resolve(rate*PRICE)
+                resolve(rate);
             });
         })
         .end();

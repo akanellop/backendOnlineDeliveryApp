@@ -1,7 +1,6 @@
-const User = require('../models/user');
+
 const Order = require('../models/order');
 const Product = require('../models/product');
-const Cart = require('../models/cart')
 
 
 
@@ -18,6 +17,7 @@ exports.returnSubmittedOrders = (req,res) =>{
 }
 
 
+//Functions for menu's products manipulation as the admin/shopOwner
 exports.createProduct = (req,res) =>{
     const product = new Product({
         name:req.body.name,
@@ -37,6 +37,7 @@ exports.createProduct = (req,res) =>{
     });
 };
 
+
 exports.updateProduct = (req,res) => {
     const product = new Product({
         _id:req.params.id,
@@ -47,7 +48,7 @@ exports.updateProduct = (req,res) => {
 
     Product.updateOne({_id:req.params.id},product).then(()=>{
         res.status(201).json({
-            message:"update succeed"
+            message:"Successfull update"
         });
     }).catch((error)=>{
         res.status(400).json({
@@ -60,7 +61,7 @@ exports.deleteProduct = (req,res) => {
     Product.deleteOne({_id: req.params.id}).then(
         () => {
           res.status(200).json({
-            message: 'Deleted!'
+            message: 'Deleted'
           });
         }
       ).catch(
@@ -72,43 +73,4 @@ exports.deleteProduct = (req,res) => {
       );
 }
 
-
-//!!! For testing and implementation !!!
-
-exports.returnUsers = (req,res) =>{
-    User.find().then(
-        (products) => {
-            res.status(200).json(products);
-        }
-    ).catch((error)=>{
-        res.status(400).json({
-            error: error
-          });
-    });
-}
-
-exports.deleteEverything = (req,res) =>{
-    User.deleteMany()
-    .catch((error)=>{
-        res.status(400).json({
-            error: error
-          });
-    });
-    
-
-    Cart.deleteMany()
-    .catch((error)=>{
-        res.status(400).json({
-            error: error
-          });
-    });
-    Order.deleteMany()
-    .then(res.status(200).json({message:'all good'}))
-    .catch((error)=>{
-        res.status(400).json({
-            error: error
-          });
-    });
-
-}
 
