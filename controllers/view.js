@@ -1,5 +1,6 @@
 
 const Product = require('../models/product');
+const cur = require('../services/fixCurrency')
 
 exports.viewInventory = (req,res) =>{
     Product.find()
@@ -11,6 +12,7 @@ exports.viewInventory = (req,res) =>{
             error: error
         });
     });
+    
 }
 
 
