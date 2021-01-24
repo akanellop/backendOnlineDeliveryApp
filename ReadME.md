@@ -93,7 +93,7 @@ order {
     products: [ref: Product], address: , totalPrice:  
 }  
 * Folders  
-routes: Contains the redirection od the requests to the rigth controllers  
+routes: Contains the redirection of the requests to the rigth controllers  
 models: Contains DB schemas  
 controllers: Contains the server's buisness logic and the request handling   
 sevices & middleware: Contain complementary functions  
